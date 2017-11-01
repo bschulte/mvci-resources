@@ -3,11 +3,12 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Resources from '../views/Resources'
 import axios from 'axios'
+import 'babel-polyfill'
 
 export default class extends React.Component {
   static async getInitialProps() {
     // Get the characters
-    let response = await axios.get('http://localhost:3333/api/characters')
+    let response = await axios.get('http://api.mvci-resources.com/api/characters')
     let characters
     if (response.status !== 200) {
       console.log('Error getting characters!')
@@ -18,7 +19,7 @@ export default class extends React.Component {
     }
 
     // Get the matches
-    response = await axios.get('http://localhost:3333/api/matches')
+    response = await axios.get('http://api.mvci-resources.com/api/matches')
     let matches
     if (response.status !== 200) {
       console.log('Error getting matches!')
@@ -29,7 +30,7 @@ export default class extends React.Component {
     }
 
     // Get the videos
-    response = await axios.get('http://localhost:3333/api/videos')
+    response = await axios.get('http://api.mvci-resources.com/api/videos')
     let videos
     if (response.status !== 200) {
       console.log('Error getting videos!')
@@ -40,7 +41,7 @@ export default class extends React.Component {
     }
 
     // Get the tutorials
-    response = await axios.get('http://localhost:3333/api/tutorials')
+    response = await axios.get('http://api.mvci-resources.com/api/tutorials')
     let tutorials
     if (response.status !== 200) {
       console.log('Error getting tutorials!')

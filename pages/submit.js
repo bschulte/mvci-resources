@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default class extends React.Component {
   static async getInitialProps() {
-    const response = await axios.get('http://localhost:3333/api/characters')
+    const response = await axios.get('http://api.mvci-resources.com/api/characters')
     if (response.status !== 200) {
       console.log('Error getting characters!')
       console.log(response)

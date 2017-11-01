@@ -43,7 +43,7 @@ class SubmitResource extends Component {
   async submitResource(toastr) {
     console.log('Submitting resource')
     const { resourceUrl, title, charactersSelected, resourceType, contributionKey } = this.state
-    const response = await axios.post('http://localhost:3333/api/resource', {
+    const response = await axios.post('http://api.mvci-resources.com/api/resource', {
       url: resourceUrl,
       title: title,
       characters: charactersSelected,
