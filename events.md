@@ -7,3 +7,4 @@
 - Canada Cup
 - Red Bull Proving Grounds
 - Northwest Majors
+- SCR

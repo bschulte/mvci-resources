@@ -4,6 +4,11 @@ import Characters from '../components/Characters'
 import axios from 'axios'
 import { ToastContainer } from 'react-toastr'
 
+function isUrl(s) {
+  var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+  return regexp.test(s)
+}
+
 class SubmitResource extends Component {
   constructor(props) {
     super(props)
@@ -43,6 +48,30 @@ class SubmitResource extends Component {
   async submitResource(toastr) {
     console.log('Submitting resource')
     const { resourceUrl, title, charactersSelected, resourceType, contributionKey } = this.state
+
+    /////////////////////////////////////////////
+    // Perform the validation for the fields
+    /////////////////////////////////////////////
+
+    // Check if the URL is valid
+    if (!isUrl(resourceUrl)) {
+      toastr.warning('URL is not valid')
+      return
+    }
+    // Check if the type is tutorial or match and if we have the proper number of characters selected
+    if (resourceType === 'Match' && charactersSelected.length !== 4) {
+      toastr.warning('Select all 4 characters used in the match')
+      return
+    } else if (resourceType === 'Tutorial' && charactersSelected !== 1) {
+      toastr.warning('One character must be selected for the tutorial')
+      return
+    }
+    // Check that a title is present for a tutorial or video
+    if ((resourceType === 'Tutorial' || resourceType === 'Video') && !title) {
+      toastr.warning('Enter a title for the tutorial or video')
+      return
+    }
+
     const response = await axios.post('http://api.mvci-resources.com/api/resource', {
       url: resourceUrl,
       title: title,
