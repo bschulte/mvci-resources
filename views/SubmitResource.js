@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Input, Row, Col, Label } from 'reactstrap'
 import Characters from '../components/Characters'
-import toastr from 'toastr'
 import axios from 'axios'
+import { ToastContainer } from 'react-toastr'
 
 class SubmitResource extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class SubmitResource extends Component {
       charactersSelected: [],
       resourceType: 'Video',
       resourceUrl: '',
-      title: ''
+      title: '',
+      contributionKey: ''
     }
 
     this.addCharacter = this.addCharacter.bind(this)
@@ -39,14 +40,15 @@ class SubmitResource extends Component {
     }
   }
 
-  async submitResource() {
+  async submitResource(toastr) {
     console.log('Submitting resource')
-    const { resourceUrl, title, charactersSelected, resourceType } = this.state
+    const { resourceUrl, title, charactersSelected, resourceType, contributionKey } = this.state
     const response = await axios.post('http://localhost:3333/api/resource', {
       url: resourceUrl,
       title: title,
       characters: charactersSelected,
-      type: resourceType
+      type: resourceType,
+      contributionKey: contributionKey
     })
 
     if (response.status !== 200) {
@@ -68,8 +70,11 @@ class SubmitResource extends Component {
   }
 
   render() {
+    let container
+
     return (
       <div>
+        <ToastContainer ref={ref => (container = ref)} className="toast-top-right" />
         <Characters
           characterFilter={this.state.charactersSelected}
           characters={this.props.characters}
@@ -100,6 +105,19 @@ class SubmitResource extends Component {
             </Col>
           </Row>
         )}
+        <hr />
+        <Row>
+          <Col xs="4">
+            <Label for="contribution-key-input">Contribution Key</Label>
+            <Input
+              type="text"
+              name="contribution-key"
+              id="contribution-key-input"
+              value={this.state.contributionKey}
+              onChange={e => this.setState({ contributionKey: e.target.value })}
+            />
+          </Col>
+        </Row>
         <Row>
           <Col xs="2">
             <Label for="resource-type-input">Resource Type</Label>
@@ -138,9 +156,65 @@ class SubmitResource extends Component {
         </Row>
         <Row>
           <Col>
-            <Button className="mt-4" color="success" onClick={this.submitResource}>
+            <Button className="mt-4" color="success" onClick={() => this.submitResource(container)}>
               <i className="fa fa-upload" />&nbsp;SUBMIT
             </Button>
+          </Col>
+        </Row>
+
+        {/* Instructions */}
+        <hr />
+        <Row>
+          <Col>
+            <h4>Instructions</h4>
+            <ul>
+              <li>
+                <strong>Contribution Key</strong>
+                <ul>
+                  <li>
+                    <p>
+                      This is a key used to authenticate who's submitting the resource. By default, I'll go through
+                      submitted resources and verify them before enabling them for the site. For trusted contributors,
+                      I'll give out contribution keys that can be included in the submission to automatically enable the
+                      resource for the site.
+                    </p>
+                    <p>If you'd like to get a contribution key reach out to me via email (address in About page)</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Resource Type</strong>
+                <ul>
+                  <li>Video should be used for full tournaments</li>
+                  <li>Match should be used for individual matches with 4 specified characters</li>
+                  <li>Tutorials should be for character specific videos or web resources</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Resource URL</strong>
+                <ul>
+                  <li>URL for the resource</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Title</strong>
+                <ul>
+                  <li>
+                    Title for the resource. Should be used for Videos and Tutorials to detail what tournament or the
+                    type of tutorial the resource is.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Characters/Teams</strong>
+                <ul>
+                  <li>
+                    Characters should be selected for Tutorials (single character) and Matches (all 4 characters).
+                    Characters are placed into team 1 and 2 in the order they are selected.
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </Col>
         </Row>
       </div>

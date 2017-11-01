@@ -12,7 +12,9 @@ module.exports = (conn, DataTypes) => {
     char2: DataTypes.INTEGER,
     char3: DataTypes.INTEGER,
     char4: DataTypes.INTEGER,
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    enabled: DataTypes.INTEGER,
+    contribution_key_id: DataTypes.INTEGER
   })
 
   return resource

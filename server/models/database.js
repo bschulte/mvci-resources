@@ -23,5 +23,6 @@ db.sequelize = sequelize
 db.user = require('./user')(sequelize, Sequelize)
 db.character = require('./character')(sequelize, Sequelize)
 db.resource = require('./resource')(sequelize, Sequelize)
+db.contributionKey = require('./contributionKey')(sequelize, Sequelize)
 
 module.exports = db

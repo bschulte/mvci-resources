@@ -11,6 +11,8 @@ export default ({ children, title = 'This is the default title', page }) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+      <link rel="stylesheet" href="/static/css/animate.css" />
     </Head>
     <Container fluid>
       <Row>
