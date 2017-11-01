@@ -39,13 +39,29 @@ export default class extends React.Component {
       videos = response.data
     }
 
-    return { characters: characters, matches: matches, videos: videos }
+    // Get the tutorials
+    response = await axios.get('http://localhost:3333/api/tutorials')
+    let tutorials
+    if (response.status !== 200) {
+      console.log('Error getting tutorials!')
+      console.log(response)
+      tutorials = []
+    } else {
+      tutorials = response.data
+    }
+
+    return { characters: characters, matches: matches, videos: videos, tutorials: tutorials }
   }
 
   render() {
     return (
       <Layout title="MvC:I Resources" page="home">
-        <Resources characters={this.props.characters} matches={this.props.matches} videos={this.props.videos} />
+        <Resources
+          characters={this.props.characters}
+          matches={this.props.matches}
+          videos={this.props.videos}
+          tutorials={this.props.tutorials}
+        />
       </Layout>
     )
   }

@@ -48,5 +48,17 @@ module.exports = {
     logger.log('verbose', 'Getting all videos')
     const videos = await db.resource.findAll({ where: { type: 'Video' } })
     res.status(200).json(videos)
+  },
+
+  /**
+   * Get all the tutorials in the database
+   *
+   * @param {any} req
+   * @param {any} res
+   */
+  async getAllTutorials(req, res) {
+    logger.log('verbose', 'Getting all tutorials')
+    const tutorials = await db.resource.findAll({ where: { type: 'Tutorial' } })
+    res.status(200).json(tutorials)
   }
 }

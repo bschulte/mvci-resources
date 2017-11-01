@@ -14,7 +14,7 @@ export default ({ children, title = 'This is the default title', page }) => (
     </Head>
     <Container fluid>
       <Row>
-        <Col xs={{ size: 8, offset: 2 }} className="main">
+        <Col xs={{ size: 10, offset: 1 }} className="main">
           <header>
             <Navbar activePage={page} />
           </header>
