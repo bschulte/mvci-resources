@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "arrowFunctions": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-const-assign": "error",
+    "no-this-before-super": "error",
+    "no-undef": "error",
+    "no-unreachable": "error",
+    "no-unused-vars": "error",
+    "constructor-super": "error",
+    "react/jsx-uses-vars": ["error"],
+    "react/jsx-uses-react": ["error"]
+  }
+}

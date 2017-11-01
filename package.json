@@ -1,0 +1,39 @@
+{
+  "name": "mvci-resources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "7.1.5",
+    "axios": "^0.17.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-wrap-in-js": "^1.1.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "eslint-plugin-react": "^7.4.0",
+    "glob": "^7.1.2",
+    "jquery": "^3.2.1",
+    "next": "^4.1.3",
+    "node-sass": "^4.4.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.0.7",
+    "raw-loader": "^0.5.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-select": "^1.0.0-rc.10",
+    "reactstrap": "^5.0.0-alpha.3",
+    "sass-loader": "^6.0.6",
+    "toastr": "^2.1.2"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.9.0"
+  }
+}

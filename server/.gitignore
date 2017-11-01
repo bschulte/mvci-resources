@@ -1,0 +1,48 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+# npm
+node_modules
+*.log
+*.gz
+
+
+# Coveralls
+coverage
+
+# Benchmarking
+benchmarks/graphs
+
+# Node
+.env
+uploads
+
+tasks.todo
+**/__pycache__
+**/*.pyc
+results.json
+
+logs
+coverage
+**/*.apk
+
+deploy.bat
+
+public
+
+.vscode
+.vscode/.sftpConfig.json
+
+**/*.pyc
+

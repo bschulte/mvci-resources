@@ -1,0 +1,23 @@
+// Misc styles
+#page-footer {
+  position: absolute;
+  bottom: 10px;
+}
+
+.char-img {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 4px 2px 38px -5px rgba(3, 66, 117, 0.74);
+    opacity: 1 !important;
+  }
+
+  &.active-char {
+    border: 3px solid rgb(194, 0, 0);
+    opacity: 1 !important;
+  }
+
+  &.inactive-char {
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,26 @@
+.nav {
+  background-color: $gray-700;
+  color: $white;
+  height: 60px;
+  align-self: center;
+  width: 100%;
+
+  .nav-link {
+    color: inherit;
+
+    &.active {
+      border-bottom: 1px solid $primary;
+    }
+  }
+
+  .nav-item {
+    align-self: center;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s ease-out;
+    &:hover {
+      background-color: $primary;
+      padding-bottom: 5px;
+    }
+  }
+}
